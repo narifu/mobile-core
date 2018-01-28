@@ -1,0 +1,66 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "rainbow-mobile-core@^2.0.1",
+        "scope": null,
+        "escapedName": "rainbow-mobile-core",
+        "name": "rainbow-mobile-core",
+        "rawSpec": "^2.0.1",
+        "spec": ">=2.0.1 <3.0.0",
+        "type": "range"
+      },
+      "/Users/tony/Documents/mobile/demo"
+    ]
+  ],
+  "_from": "rainbow-mobile-core@>=2.0.1 <3.0.0",
+  "_id": "rainbow-mobile-core@2.0.1",
+  "_inCache": true,
+  "_location": "/rainbow-mobile-core",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "rainbow-mobile-core@^2.0.1",
+    "scope": null,
+    "escapedName": "rainbow-mobile-core",
+    "name": "rainbow-mobile-core",
+    "rawSpec": "^2.0.1",
+    "spec": ">=2.0.1 <3.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "http://repo.ebaotech.com:80/artifactory/api/npm/npm-all/rainbow-mobile-core/-/rainbow-mobile-core-2.0.1.tgz",
+  "_shasum": "af63286362352a74733597456143c86547451b0f",
+  "_shrinkwrap": null,
+  "_spec": "rainbow-mobile-core@^2.0.1",
+  "_where": "/Users/tony/Documents/mobile/demo",
+  "author": {
+    "name": "RainbowUI Team"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "rainbow-foundation-codetable": "^2.0.0",
+    "vue": "^2.1.10",
+    "vux": "^2.1.0"
+  },
+  "description": "Rainbow Mobile Core",
+  "devDependencies": {},
+  "dist": {
+    "tarball": "http://repo.ebaotech.com:80/artifactory/api/npm/npm-all/rainbow-mobile-core/-/rainbow-mobile-core-2.0.1.tgz",
+    "shasum": "af63286362352a74733597456143c86547451b0f"
+  },
+  "keywords": [],
+  "main": "./src/index.js",
+  "name": "rainbow-mobile-core",
+  "optionalDependencies": {},
+  "publishConfig": {
+    "registry": "http://repo.ebaotech.com/artifactory/api/npm/npm-all"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "https://oss.ebaotech.com/rainbow-mobile/core.git"
+  },
+  "version": "2.0.1"
+}
