@@ -1,6 +1,6 @@
 <template>
  <div>
-    <tab :line-width=3 active-color='#4D93E4' >
+    <tab :line-width="3" active-color='#4D93E4' >
        <tab-item :badge-label="item.badge" :disabled="item.disabled"  :selected="item.selected" v-for="(item, index) in tabItems" @on-item-click="onItemClick" :key="index">{{item.text}}</tab-item>
     </tab>
  </div>   
@@ -24,7 +24,7 @@ export default {
     onItemClick(tindex){
       _.each(this.tabItems,(item,index)=>{
           if(tindex==index&&item.onClick){
-              item.onClick();
+              item.onClick(tindex);
           }
       });
     }

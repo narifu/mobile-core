@@ -23,11 +23,6 @@ export default {
       i18n:this.$i18n["messages"],
     };
   },
-  methods:{
-    clearValue (value) {
-      this.tempModel = null;
-    }
-  },
   components: {
     PopupRadio
   },
@@ -53,6 +48,9 @@ export default {
             }
          });
          return model?model.value:null;
+      },
+      clearValue (value) {
+        this.tempModel = null;
       }
   },
   watch:{
@@ -77,5 +75,8 @@ export default {
 }
 .weui-cells_radio .weui-check:checked + .weui-icon-checked:before {
     color: #4D93E4!important;
+}
+.vux-label {
+    display: flex!important;
 }
 </style>

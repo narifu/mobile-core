@@ -1,10 +1,12 @@
+import en_US from './i18n/en_US.js';
+import zh_CN from './i18n/zh_CN.js';
 import Card from './components/card/index.vue';
 import MenuBar from './components/menu/index.vue';
 import TabBar from './components/tabBar/index.vue';
 import ActionSheet from './components/actionsheet/index.vue';
 import Drawer from './components/drawer/index.vue';
 import Loading from './components/loading/index.vue';
-import Tab from './components/tab/index.vue';
+import Tab from './components/tab/tab.vue';
 import Page from './components/page/index.vue';
 import Grid from './components/grid/index.vue';
 import Scroller from './components/scroller/index.vue';
@@ -19,8 +21,9 @@ import List from './components/list/index.vue';
 import Cell from './components/cell/index.vue';
 import Box from './components/box/index.vue';
 import RButton from './components/button/index.vue';
-import en_US from './i18n/en_US.js';
-import zh_CN from './i18n/zh_CN.js';
+import Swiper from './components/swiper/swiper.vue';
+import SwiperItem from './components/swiper/swiper-item.vue';
+
 
 export {
     Card,
@@ -30,7 +33,6 @@ export {
     Drawer,
     Loading,
     Tab,
-    TabItem,
     Page,
     Grid,
     Scroller,
@@ -45,6 +47,8 @@ export {
     Cell,
     Box,
     RButton,
+    SwiperItem,
+    Swiper,
     en_US,
     zh_CN
 };

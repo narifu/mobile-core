@@ -7,7 +7,10 @@
     :plain="plain" 
     :style="styleClass" 
     :class="className" 
-    :disabled="disabled"><slot/></x-button>
+    :disabled="disabled"
+    @click.native="clickButton"
+    v-bind:data-param="param"
+    ><slot/></x-button>
 </template>
 
 <script>
@@ -25,6 +28,8 @@ export default {
     mini:Boolean,
     plain:Boolean,
     disabled:Boolean,
+    onClick:Function,
+    param:String
   },
   components: {
     XButton
@@ -33,6 +38,11 @@ export default {
     _type(){
       return this.type=="danger"?'warn':this.type;
     },
+  },
+  methods:{
+    clickButton(event){
+        this.onClick?this.onClick(event):null;
+    }
   }
 }
 </script>
@@ -50,4 +60,5 @@ export default {
 .weui-btn_disabled.weui-btn_primary {
     background-color: #4D93E4!important;
 }
+
 </style>

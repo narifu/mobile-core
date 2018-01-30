@@ -38,3 +38,8 @@ export default {
   }
 }
 </script>
+<style>
+.weui-grids{
+  background-color: #ffffff
+}
+</style>

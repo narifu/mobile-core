@@ -1,8 +1,10 @@
 <template>
       <div>
         <div v-for="(item,index) in list" :key="index" :class="item.class">
-          <span style="font-size:20px;">Loading</span>
-          <x-img :src="item.src"  @on-success="success" @on-error="error" class="ximg-demo" error-class="ximg-error" :offset="-100" container="#vux_view_box_body"></x-img>
+          <div @click='_action(item.action,item.param)' data-param="111">
+            <span style="font-size:20px;"></span>
+            <x-img :src="item.src"  @on-success="success" @on-error="error" class="ximg-demo" error-class="ximg-error" :offset="-100" container="#vux_view_box_body"></x-img>
+          </div>
         </div>
       </div>
 </template>
@@ -25,6 +27,9 @@ export default {
     error (src, ele, msg) {
       const span = ele.parentNode.querySelector('span')
       span.innerText = 'load error'
+    },
+    _action(action,param){
+      action?action(param):null;
     }
   }
 }
