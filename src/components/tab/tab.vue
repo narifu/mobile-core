@@ -9,9 +9,6 @@
 <script>
 const Tab =  require("vux/src/components/tab/tab.vue");
 const TabItem =  require("vux/src/components/tab/tab-item.vue");
-
-
-import _ from "lodash";
 export default {
   props: {
     tabItems: Array

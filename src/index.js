@@ -23,6 +23,9 @@ import Box from './components/box/index.vue';
 import RButton from './components/button/index.vue';
 import Swiper from './components/swiper/swiper.vue';
 import SwiperItem from './components/swiper/swiper-item.vue';
+import RSwitch from './components/switch/index.vue';
+import RInput from './components/input/index.vue';
+import RTextarea from './components/textarea/index.vue';
 
 
 export {
@@ -49,6 +52,9 @@ export {
     RButton,
     SwiperItem,
     Swiper,
+    RSwitch,
+    RInput,
+    RTextarea,
     en_US,
     zh_CN
 };
