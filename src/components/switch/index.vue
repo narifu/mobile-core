@@ -1,6 +1,6 @@
 <template>
  <div>
-          <x-switch :title="title" :value-map="[0, 1]" v-model="tempModel" :disabled='disabled' ></x-switch>
+          <x-switch :title="title" :value-map="[false,true]" v-model="tempModel" :disabled='disabled' ></x-switch>
 </div>
 </template>
 
@@ -9,7 +9,7 @@
 const XSwitch =  require("vux/src/components/x-switch/index.vue");
 export default {
   props: {
-    model:Number,
+    model:Boolean,
     title:String,
     disabled:Boolean,
     onChange:Function
