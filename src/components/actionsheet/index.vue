@@ -1,7 +1,7 @@
 <template>
 <div>
-    <actionsheet v-model="menuShow" :menus="menuList" @on-click-menu="click" @on-click-mask="clickMask">
-              <p slot="header" v-html="headerHtml"></p>
+    <actionsheet :close-on-clicking-menu="autoClose" v-model="menuShow" :menus="_menus" @on-click-menu="click" @on-click-mask="clickMask" :theme="theme" :show-cancel="showCancel" :close-on-clicking-mask="isClickMask">
+              <div slot="header"  v-if="isHeaderHtml"><slot/></div>
     </actionsheet>
 </div>    
 </template>
@@ -24,17 +24,25 @@ export default {
         return false
       }
     },
-    menuList: {
-      type: Object,
+    autoClose: {
+      type: Boolean,
       default () {
-        return {
-          menu1: 'menu1',
-          menu2: 'menu2'
-        }
+        return true
       }
     },
-    headerHtml:String,
-    onClick: Function
+    menuList: Object,
+    menuArrary: Array,
+    isHeaderHtml:Boolean,
+    theme:String,
+    onClick: Function,
+    onClickMask: Function,
+    showCancel:Boolean,
+    isClickMask:{
+      type: Boolean,
+      default () {
+        return true
+      }
+    }
   },
   data () {
     return {
@@ -48,15 +56,15 @@ export default {
   },
   methods: {
     click (key) {
-      if(this.onClick){
-        this.onClick(key);
-      }
+        this.onClick?this.onClick(key):null;
     },
     clickMask(){
-      // console.log(this.menuShow);
-      //  if(this.menuShow){
-      //     this.menuShow = false;
-      //  }
+        this.onClickMask?this.onClickMask():null;
+    }
+  },
+  computed:{
+    _menus(){
+      return this.menuList?this.menuList:this.menuArrary?this.menuArrary:null;
     }
   }
 }

@@ -3,7 +3,7 @@ import zh_CN from './i18n/zh_CN.js';
 import Card from './components/card/index.vue';
 import MenuBar from './components/menu/index.vue';
 import TabBar from './components/tabBar/index.vue';
-import ActionSheet from './components/actionsheet/index.vue';
+import Actionsheet from './components/actionsheet/index.vue';
 import Drawer from './components/drawer/index.vue';
 import Loading from './components/loading/index.vue';
 import Tab from './components/tab/tab.vue';
@@ -26,13 +26,15 @@ import SwiperItem from './components/swiper/swiper-item.vue';
 import RSwitch from './components/switch/index.vue';
 import RInput from './components/input/index.vue';
 import RTextarea from './components/textarea/index.vue';
-
+import Toast from './components/toast/index.vue';
+import Panel from './components/panel/index.vue';
+import Row from './components/row/index.vue';
 
 export {
     Card,
     MenuBar,
     TabBar,
-    ActionSheet,
+    Actionsheet,
     Drawer,
     Loading,
     Tab,
@@ -55,6 +57,9 @@ export {
     RSwitch,
     RInput,
     RTextarea,
+    Toast,
+    Panel,
+    Row,
     en_US,
     zh_CN
 };
