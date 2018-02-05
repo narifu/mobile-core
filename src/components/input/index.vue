@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-bind:ref="id">
     <group>
         <x-input 
         :title="title" 
@@ -24,7 +24,7 @@
         @on-focus="_onFocus"
         @on-blur="_onBlur"
         @on-enter="_onEnter"
-        v-bind:ref="id"
+        
         >
          <div slot="label" v-if="!title"><slot/></div>
          <div slot="right" v-if="right"><slot/></div>
@@ -96,26 +96,45 @@ export default {
       return this.onFocus?this._wapperOnFocus:this.moveInput;
     },
     _onBlur(){
-      return this.onBlur?this.onBlur:()=>{};
+      return this.onBlur?this._wapperOnBlur:this.backInput;
     },
     _keyboard(){
       return this.isPhone?'number':'text';
     },
     _onEnter(){
-      return this.onEnter?this.onEnter:()=>{};
+      return this.onEnter?this._wapperOnEnter:this.backInput;
     }
   },
   methods:{
-    moveInput(){
-      const id = this.$refs[_.keys(this.$refs)[0]].$refs['input']['id'];
+    backInput(){
+       const object = this.$refs[_.keys(this.$refs)[0]];
       setTimeout(function(){
-        const pannel = document.getElementById(id);
-        pannel.scrollIntoView(true);
-      },200)
+        object.style.position='unset';
+        object.style.bottom='unset';
+        object.style.width='100%';
+        object.style.zIndex='0';
+      },200);
+    },
+    moveInput(){
+      const object = this.$refs[_.keys(this.$refs)[0]];
+      setTimeout(function(){
+        object.style.position='fixed';
+        object.style.bottom='0';
+        object.style.width='100%';
+        object.style.zIndex='600';
+      },200);
     },
     _wapperOnFocus(){
       this.moveInput();
       return this.onFocus;
+    },
+    _wapperOnBlur(){
+      this.backInput();
+      return this.onBlur;
+    },
+    _wapperOnEnter(){
+      this.backInput();
+      return this.onEnter;
     }
   },
   watch: {
