@@ -1,7 +1,7 @@
 import en_US from './i18n/en_US.js';
 import zh_CN from './i18n/zh_CN.js';
 import Card from './components/card/index.vue';
-import MenuBar from './components/menu/index.vue';
+import RHeader from './components/header/index.vue';
 import TabBar from './components/tabBar/index.vue';
 import Actionsheet from './components/actionsheet/index.vue';
 import Drawer from './components/drawer/index.vue';
@@ -32,7 +32,7 @@ import Row from './components/row/index.vue';
 
 export {
     Card,
-    MenuBar,
+    RHeader,
     TabBar,
     Actionsheet,
     Drawer,

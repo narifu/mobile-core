@@ -1,7 +1,7 @@
 <template>
 <div>
     <x-header :left-options="leftOptions" :right-options="rightOptions" :title="title" style="styleClass" @on-click-more="clickMore">
-      <slot></slot>
+      <span slot="right"><slot/></span>
     </x-header>
 </div>    
 </template>

@@ -9,7 +9,12 @@ const Box =  require("vux/src/components/box/index.vue");
 
 export default {
   props: {
-    padding: String
+    padding: {
+      type:String,
+      default(){
+        return '10px 20px'
+      }
+    }
   },
   components: {
     Box

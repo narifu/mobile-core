@@ -6,13 +6,14 @@
               :value="value" 
               @click.native="_onClick" 
               :is-loading="isLoading"
-              :is-link="isLink"
+              :is-link="_isLink"
               :disabled="disabled"
               :primary="primary"
               :border-intent="false"
-              :arrow-direction="arrowFlag ? 'up' : 'down'"
+              :arrow-direction="arrowFlag ? 'down' : null"
               >
                 <span slot="title" v-if="!title"><slot/></span>
+                <span v-if="title&&!value"><slot/></span>
               </cell>
          </group>
     </div>
@@ -27,6 +28,7 @@ export default {
     title:String,
     value:String,
     primary:String,
+    link:String,
     onClick:Function,
     isLoading:Boolean,
     isLink:Boolean,
@@ -39,8 +41,13 @@ export default {
   },
   methods:{
       _onClick(event){
-        this.onClick?this.disabled?null:this.onClick(event):null;
+        this.onClick?this.disabled?null:this.onClick(event):this.link?this.disabled?null:window.location.hash=this.link:null;
       }
+  },
+  computed:{
+    _isLink(){
+      return this.link?true:this.isLink;
+    }
   }
 }
 </script>

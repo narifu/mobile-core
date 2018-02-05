@@ -20,7 +20,12 @@ export default {
   props: {
     gradients: Array,
     value: String,
-    type: String,
+    type: {
+      type:String,
+      default(){
+        return 'primary'
+      }
+    },
     link: String,
     styleClass: String,
     className: String,

@@ -24,6 +24,7 @@
         @on-focus="_onFocus"
         @on-blur="_onBlur"
         @on-enter="_onEnter"
+        v-bind:ref="id"
         >
          <div slot="label" v-if="!title"><slot/></div>
          <div slot="right" v-if="right"><slot/></div>
@@ -78,6 +79,7 @@ export default {
   data(){
     return {
       tempModel:this.model,
+      id:_.uniqueId('input-')
     }
   },
   computed: {
@@ -91,7 +93,7 @@ export default {
       return this.isEmail?'email':null;
     },
     _onFocus(){
-      return this.onFocus?this.onFocus:()=>{};
+      return this.onFocus?this._wapperOnFocus:this.moveInput;
     },
     _onBlur(){
       return this.onBlur?this.onBlur:()=>{};
@@ -101,6 +103,19 @@ export default {
     },
     _onEnter(){
       return this.onEnter?this.onEnter:()=>{};
+    }
+  },
+  methods:{
+    moveInput(){
+      const id = this.$refs[_.keys(this.$refs)[0]].$refs['input']['id'];
+      setTimeout(function(){
+        const pannel = document.getElementById(id);
+        pannel.scrollIntoView(true);
+      },200)
+    },
+    _wapperOnFocus(){
+      this.moveInput();
+      return this.onFocus;
     }
   },
   watch: {

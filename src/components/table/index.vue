@@ -11,7 +11,7 @@
         <tbody>
           <tr v-for="(item, index) in data.body" :key="index" >
             <td v-for="(citem, cindex) in item" :key="cindex" :colspan="citem.colspan" :rowspan="citem.rowspan">
-              <a v-if="citem.link" :href="`/#${citem.link}`">
+              <a v-if="citem.link" href="javascript:void(0)" @click="goto(citem.link)">
                 <span v-if="citem.icon" :title="citem.text" :class="citem.icon"></span>
                 <span v-else-if="citem.text">{{citem.text}}</span>
               </a>
@@ -33,6 +33,11 @@ export default {
   components: {
     XTable
   },
+  methods:{
+    goto(link){
+        window.location.hash=link;
+    }
+  }
 }
 </script>
 <style>
