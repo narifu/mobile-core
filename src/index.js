@@ -12,7 +12,6 @@ import Grid from './components/grid/index.vue';
 import Scroller from './components/scroller/index.vue';
 import RImage from './components/image/index.vue';
 import Divider from './components/divider/index.vue';
-import RForm from './components/form/index.vue';
 import DateTime from './components/datetime/index.vue';
 import Selector from './components/selector/index.vue';
 import Picker from './components/picker/index.vue';
@@ -29,6 +28,9 @@ import RTextarea from './components/textarea/index.vue';
 import Toast from './components/toast/index.vue';
 import Panel from './components/panel/index.vue';
 import Row from './components/row/index.vue';
+import Popup from './components/popup/index.vue';
+import Step from './components/step/index.vue';
+import Checker from './components/checker/index.vue';
 
 export {
     Card,
@@ -43,7 +45,6 @@ export {
     Scroller,
     RImage,
     Divider,
-    RForm,
     DateTime,
     Selector,
     Picker,
@@ -60,6 +61,9 @@ export {
     Toast,
     Panel,
     Row,
+    Popup,
+    Step,
+    Checker,
     en_US,
     zh_CN
 };
