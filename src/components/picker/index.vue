@@ -35,7 +35,7 @@ export default {
   },
   computed:{
       placeholder(){
-        return this.model?'':this.i18n[this.$i18n["locale"]].vux.common.pleaseselect
+        return _.isEmpty(this.model[this.value])?this.i18n[this.$i18n["locale"]].vux.common.pleaseselect:null
       },
       _onChange(){
         return this.onChange?this.onChange:()=>{};
