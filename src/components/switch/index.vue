@@ -1,6 +1,6 @@
 <template>
  <div>
-          <x-switch :title="title" :value-map="[false,true]" v-model="tempModel" :disabled='disabled' ></x-switch>
+          <x-switch :title="title" :value-map="[false,true]" v-model="model[value]" :disabled='disabled' @click.native="_onClick"></x-switch>
 </div>
 </template>
 
@@ -9,31 +9,21 @@
 const XSwitch =  require("vux/src/components/x-switch/index.vue");
 export default {
   props: {
-    model:Boolean,
+    model:Object,
+    value:String,
     title:String,
     disabled:Boolean,
-    onChange:Function
-  },
-  data() {
-    return {
-      tempModel:this.model,
-      i18n:this.$i18n["messages"],
-    };
+    onChange:Function,
+    onClick:Function
   },
   components: {
     XSwitch
   },
-  computed:{
-     
-  },
-  watch:{
-    model(val){
-      this.tempModel= val;
-    },
-    tempModel(val){
-      this.onChange?this.onChange(val):null;
+  methods:{
+    _onClick(){
+       this.onClick?this.onClick():()=>{};
     }
-  }
+  },
 };
 </script>
 

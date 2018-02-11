@@ -4,7 +4,7 @@
         <x-textarea 
         :title="title" 
         :placeholder="placeholder" 
-        v-model="tempModel"
+        v-model="model[value]"
         :max="max"
         :show-counter="showCounter"
         :rows="rows"
@@ -17,6 +17,7 @@
         @on-focus="_onFocus"
         @on-blur="_onBlur"
         @on-enter="_onEnter"
+        @on-change="_onChange"
         >
         </x-textarea>
     </group>
@@ -48,16 +49,12 @@ export default {
     disabled:Boolean,
     readonly:Boolean,
     model:Object,
+    value:String,
     max:Number,
   },
   components: {
     XTextarea,
     Group
-  },
-  data(){
-    return {
-      tempModel:this.model,
-    }
   },
   computed: {
     _validator() {
@@ -80,16 +77,11 @@ export default {
     },
     _onEnter(){
       return this.onEnter?this.onEnter:()=>{};
+    },
+    _onChange(){
+      return this.onChange?this.onChange:()=>{};
     }
   },
-  watch: {
-    model(val){
-      this.tempModel= val;
-    },
-    tempModel(val){
-      this.onChange?this.onChange(val):null;
-    }
-  }
 }
 </script>
 <style>

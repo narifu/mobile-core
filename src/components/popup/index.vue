@@ -1,6 +1,6 @@
 <template>
      <div v-transfer-dom>
-      <popup v-model="tempModel" :show-mask="showMask" @on-hide="_onHide" @on-show="_onShow" :height="height" :width="width" :hide-on-blur="disableMask" :position="position">
+      <popup v-model="model[value]" :show-mask="showMask" @on-hide="_onHide" @on-show="_onShow" :height="height" :width="width" :hide-on-blur="disableMask" :position="position">
         <slot/>
       </popup>
     </div>
@@ -15,7 +15,8 @@ export default {
     TransferDom
   },
   props:{
-    show: Boolean,
+    model:Object,
+    value:String,
     showMask: {
       type:Boolean,
       default(){
@@ -35,21 +36,8 @@ export default {
     position:String,
     width:String
   },
-  data(){
-    return {
-      tempModel:this.show,
-    }
-  },
   components: {
     Popup
-  },
-  watch:{
-    show(val){
-      this.tempModel= val;
-    },
-    tempModel(val){
-      this.onChange?this.onChange(val):null;
-    }
   },
   computed:{
     _onHide(){

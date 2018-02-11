@@ -1,7 +1,7 @@
 <template>
  <div>
       <datetime
-        v-model="tempModel"
+        v-model="model[value]"
         :title="title"
         :format="format"
         :minute-list="minuteList"
@@ -31,7 +31,8 @@ const Datetime =  require("vux/src/components/datetime/index.vue");
 export default {
   props: {
     title: String,
-    model:String,
+    model:Object,
+    value:String,
     format:String,
     minuteList:Array,
     hourList:Array,
@@ -43,13 +44,12 @@ export default {
   },
   data() {
     return {
-      tempModel: this.model,
       i18n:this.$i18n["messages"],
     };
   },
   methods:{
     clearValue (value) {
-      this.tempModel = null;
+      this.model[this.value] = null;
     }
   },
   components: {
@@ -87,14 +87,6 @@ export default {
         return `${this.i18n[this.$i18n["locale"]].vux.datetime.clear}`;
       }
   },
-  watch:{
-    model(val){
-      this.tempModel= val;
-    },
-    tempModel(val){
-       this.$emit("on-change",val);
-    }
-  }
 };
 </script>
 

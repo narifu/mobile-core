@@ -1,10 +1,10 @@
 <template>
       <div>
-        <checker v-if="type=='default'"  v-model="tempModel" :max="max" :type="_multiple" default-item-class="item" selected-item-class="item-selected">
+        <checker v-if="type=='default'"  v-model="model[value]" :max="max" :type="_multiple" default-item-class="item" selected-item-class="item-selected"  @on-change="onChange" >
            <checker-item :disabled="item.disabled" :value="modelKey?item:item.key" v-for="(item, index) in data" :key="index">{{item.value}}</checker-item>
         </checker>
-        <check-icon v-if="type=='icon'" :value.sync="tempModel"  :type="plain?'plain':undefined">{{ text }}</check-icon>
-        <checklist v-if="type=='list'" :max="max" :disabled="disabled" :title="title" :label-position="labelPosition" :required="required" :options="data" v-model="tempModel"></checklist>
+        <check-icon v-if="type=='icon'" :value.sync="model[value]"  :type="plain?'plain':undefined">{{ text }}</check-icon>
+        <checklist v-if="type=='list'" @on-change="onChange" :max="max" :disabled="disabled" :title="title" :label-position="labelPosition" :required="required" :options="data" v-model="model[value]"></checklist>
       </div>
 </template>
 
@@ -17,6 +17,7 @@ const Checklist =  require("vux/src/components/checklist/index.vue");
 export default {
   props: {
     model: [String, Number, Array,Boolean, Object],
+    value:String,
     data:Array,
     onChange:Function,
     modelKey:Boolean,
@@ -26,7 +27,7 @@ export default {
     type:{
         type:String,
         default(){
-            return 'default'
+            return 'list'
         }
     },
     labelPosition:{
@@ -46,37 +47,10 @@ export default {
     CheckIcon,
     Checklist
   },
-  data(){
-    return {
-      tempModel:this.model,
-       items1: [{
-        key: '1',
-        value: 'A'
-      }, {
-        key: '2',
-        value: 'B'
-      }, {
-        key: '3',
-        value: 'C'
-      }],
-      demo1: '',
-      demo1Required: '',
-      demo11: null,
-      demo21: null,
-    }
-  },
   computed:{
       _multiple(){
           return this.multiple?"checkbox":undefined
       }
-  },
-  watch:{
-    model(val){
-      this.tempModel= val;
-    },
-    tempModel(val){
-      this.onChange?this.onChange(val):null;
-    }
   },
 }
 </script>

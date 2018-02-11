@@ -1,6 +1,6 @@
 <template>
   <div>
-      <popup-picker :title="title" :data="options" v-model="tempModel" :placeholder="placeholder"  :columns="columns" :show-name="cascade"></popup-picker>
+      <popup-picker @on-change="_onChange" :title="title" :data="options" v-model="model[value]" :placeholder="placeholder"  :columns="columns" :show-name="cascade"></popup-picker>
   </div>
 </template>
 
@@ -11,16 +11,17 @@ import { PopupPicker} from 'vux'
 export default {
   props: {
     title: String,
-    model:Array,
+    model:Object,
+    value:String,
     options:Array,
     header:String,
     readonly:Boolean,
     cascade:Boolean,
-    columns:Number
+    columns:Number,
+    onChange:Function
   },
   data() {
     return {
-      tempModel:this.model,
       i18n:this.$i18n["messages"],
     };
   },
@@ -35,18 +36,12 @@ export default {
   computed:{
       placeholder(){
         return this.model?'':this.i18n[this.$i18n["locale"]].vux.common.pleaseselect
+      },
+      _onChange(){
+        return this.onChange?this.onChange:()=>{};
       }
   },
-  methods:{
-  },
-  watch:{
-    model(val){
-      this.tempModel= this.model;
-    },
-    tempModel(val){
-       this.$emit("on-change",val);
-    }
-  }
+
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-        <toast v-model="tempModel" :time="time" :type="type" :text="text" @on-show="_onShow" @on-hide="_onHide" :position="position" :is-show-mask="isShowMask"></toast>
+        <toast v-model="model[value]" :time="time" :type="type" :text="text" @on-show="_onShow" @on-hide="_onHide" :position="position" :is-show-mask="isShowMask"></toast>
 </template>
 
 <script>
@@ -7,7 +7,8 @@ const Toast =  require("vux/src/components/toast/index.vue");
 
 export default {
   props: {
-    model:Boolean,
+    model:Object,
+    value:String,
     isShowMask:Boolean,
     text:String,
     type:String,
@@ -19,11 +20,6 @@ export default {
   components: {
     Toast
   },
-  data(){
-    return {
-      tempModel:this.model,
-    }
-  },
   computed:{
     _onShow(){
       return this.onShow?this.onShow:()=>{};
@@ -32,14 +28,6 @@ export default {
       return this.onHide?this.onHide:()=>{};
     }
   },
-  watch: {
-    model(val){
-      this.tempModel= val;
-    },
-    tempModel(val){
-      this.onChange?this.onChange(val):null;
-    }
-  }
 }
 </script>
 

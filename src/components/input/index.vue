@@ -15,7 +15,7 @@
         :type="_type"
         :name="_name"
         :keyboard="_keyboard"
-        v-model="tempModel"
+        v-model="model[value]"
         :max="max"
         :min="min"
         :required="required"
@@ -24,7 +24,7 @@
         @on-focus="_onFocus"
         @on-blur="_onBlur"
         @on-enter="_onEnter"
-        
+        @on-change="_onChange"
         >
          <div slot="label" v-if="!title"><slot/></div>
          <div slot="right" v-if="right"><slot/></div>
@@ -68,6 +68,7 @@ export default {
     isPassword:Boolean,
     mask:String,
     model:Object,
+    value:String,
     equalWith:Object,
     max:Number,
     min:Number,
@@ -78,7 +79,6 @@ export default {
   },
   data(){
     return {
-      tempModel:this.model,
       id:_.uniqueId('input-')
     }
   },
@@ -103,6 +103,9 @@ export default {
     },
     _onEnter(){
       return this.onEnter?this._wapperOnEnter:this.backInput;
+    },
+    _onChange(){
+      return this.onChange?this.onChange:()=>{};
     }
   },
   methods:{
@@ -135,14 +138,6 @@ export default {
     _wapperOnEnter(){
       this.backInput();
       return this.onEnter;
-    }
-  },
-  watch: {
-    model(val){
-      this.tempModel= val;
-    },
-    tempModel(val){
-      this.onChange?this.onChange(val):null;
     }
   }
 }

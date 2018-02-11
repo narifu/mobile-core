@@ -1,6 +1,6 @@
 <template>
 <div>
-    <actionsheet :close-on-clicking-menu="autoClose" v-model="menuShow" :menus="_menus" @on-click-menu="click" @on-click-mask="clickMask" :theme="theme" :show-cancel="showCancel" :close-on-clicking-mask="isClickMask">
+    <actionsheet :close-on-clicking-menu="autoClose" v-model="model[value]" :menus="_menus" @on-click-menu="click" @on-click-mask="clickMask" :theme="theme" :show-cancel="showCancel" :close-on-clicking-mask="isClickMask">
               <div slot="header"  v-if="isHeaderHtml"><slot/></div>
     </actionsheet>
 </div>    
@@ -18,12 +18,8 @@ export default {
     TransferDom
   },
   props: {
-    showMenu: {
-      type: Boolean,
-      default () {
-        return false
-      }
-    },
+    model:Object,
+    value:String,
     autoClose: {
       type: Boolean,
       default () {
@@ -44,16 +40,6 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      menuShow:false,
-    }
-  },
-  watch:{
-    showMenu(){
-      this.menuShow = true;
-    }
-  },
   methods: {
     click (key) {
         this.onClick?this.onClick(key):null;
@@ -70,6 +56,3 @@ export default {
 }
 </script>
 
-<style>
- 
-</style>

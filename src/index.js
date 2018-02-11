@@ -31,6 +31,13 @@ import Row from './components/row/index.vue';
 import Popup from './components/popup/index.vue';
 import Step from './components/step/index.vue';
 import Checker from './components/checker/index.vue';
+import Spinner from './components/spinner/index.vue';
+import RDialog from './components/dialog/index.vue';
+import Alert from './components/alert/index.vue';
+import AlertApi from './components/alert/api';
+import Confirm from './components/confirm/index.vue';
+import LoadingApi from './components/loading/api';
+import ConfirmApi from './components/confirm/api';
 
 export {
     Card,
@@ -64,6 +71,13 @@ export {
     Popup,
     Step,
     Checker,
+    Spinner,
+    RDialog,
+    Alert,
+    AlertApi,
+    Confirm,
+    LoadingApi,
+    ConfirmApi,
     en_US,
     zh_CN
 };

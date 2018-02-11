@@ -12,7 +12,8 @@ const PopupRadio =  require("vux/src/components/popup-radio/index.vue");
 export default {
   props: {
     title: String,
-    model:String,
+    model:Object,
+    value:String,
     options:Array,
     header:String,
     readonly:Boolean
@@ -35,7 +36,7 @@ export default {
         return options;
       },
       placeholder(){
-        return this.model?'':this.i18n[this.$i18n["locale"]].vux.common.pleaseselect
+        return this.model[this.value]?'':this.i18n[this.$i18n["locale"]].vux.common.pleaseselect
       }
   },
   methods:{
@@ -50,7 +51,7 @@ export default {
          return model?model.value:null;
       },
       clearValue (value) {
-        this.tempModel = null;
+        this.model[this.value] = null;
       }
   },
   watch:{
