@@ -1,6 +1,6 @@
 <template>
  <div>
-    <popup-radio :title="title" :readonly="readonly" :options="_option" v-model="tempModel"  :placeholder="placeholder" >
+    <popup-radio @on-change="_onChange" :title="title" :readonly="readonly" :options="options" v-model="model[value]"  :placeholder="placeholder" >
               <p slot="popup-header" class="vux-1px-b demo3-slot" v-if="header">{{header}}</p>
     </popup-radio>
 </div>
@@ -20,7 +20,6 @@ export default {
   },
   data() {
     return {
-      tempModel:this.getModel(),
       i18n:this.$i18n["messages"],
     };
   },
@@ -28,43 +27,18 @@ export default {
     PopupRadio
   },
   computed:{
-      _option(){
-        const options = [];
-        _.each(this.options,(option)=>{
-          options.push(option.value);
-        });
-        return options;
-      },
       placeholder(){
-        return this.model[this.value]?'':this.i18n[this.$i18n["locale"]].vux.common.pleaseselect
+        return _.isEmpty(this.model[this.value])?this.i18n[this.$i18n["locale"]].vux.common.pleaseselect:null
+      },
+      _onChange(){
+        return this.onChange?this.onChange:()=>{};
       }
   },
   methods:{
-      getModel(val){
-         const model = _.find(this.options,(option)=>{
-            if(_.isEmpty(val)){
-              return option.key==this.model;
-            }else{
-              return option.key==val;
-            }
-         });
-         return model?model.value:null;
-      },
       clearValue (value) {
         this.model[this.value] = null;
       }
   },
-  watch:{
-    model(val){
-      this.tempModel= this.getModel(val);
-    },
-    tempModel(val){
-       const model = _.find(this.options,(option)=>{
-            return option.value==val;
-       });
-       this.$emit("on-change",model.key);
-    }
-  }
 };
 </script>
 
