@@ -12,8 +12,8 @@
               :border-intent="false"
               :arrow-direction="arrowFlag ? 'down' : null"
               >
-                <span slot="title" v-if="!title"><slot/></span>
-                <span v-if="title&&!value"><slot/></span>
+                <span slot="title" v-if="!title" class="row-value"><slot/></span>
+                <span v-if="title&&!value" class="row-value"><slot/></span>
               </cell>
          </group>
     </div>
@@ -52,7 +52,10 @@ export default {
 }
 </script>
 <style>
-
+.row-value{
+    display: flex;
+    justify-content: flex-end;
+}
 </style>
 
 

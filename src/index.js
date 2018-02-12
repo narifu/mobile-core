@@ -38,6 +38,8 @@ import AlertApi from './components/alert/api';
 import Confirm from './components/confirm/index.vue';
 import LoadingApi from './components/loading/api';
 import ConfirmApi from './components/confirm/api';
+import Marquee from './components/marquee/index.vue';
+import Badge from './components/badge/index.vue';
 
 export {
     Card,
@@ -78,6 +80,8 @@ export {
     Confirm,
     LoadingApi,
     ConfirmApi,
+    Marquee,
+    Badge,
     en_US,
     zh_CN
 };
